@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryOrganizerFloorProgram", "..\FactoryOrganizerOfficeAndFloorPrograms\FactoryOrganizerFloorProgram\FactoryOrganizerFloorProgram.csproj", "{04F36372-E132-4EFE-90D0-8D192B2F72D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryOrganizerWebsite", "FactoryOrganizerWebsite\FactoryOrganizerWebsite.csproj", "{782C4723-B786-4DC2-97AE-DB5D9FB9DFE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryOrganizerOfficeProgram", "..\FactoryOrganizerOfficeAndFloorPrograms\FactoryOrganizerOfficeProgram\FactoryOrganizerOfficeProgram.csproj", "{DE3B3827-FFE4-470D-9F2F-5F73FC5D20B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04F36372-E132-4EFE-90D0-8D192B2F72D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F36372-E132-4EFE-90D0-8D192B2F72D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F36372-E132-4EFE-90D0-8D192B2F72D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F36372-E132-4EFE-90D0-8D192B2F72D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{782C4723-B786-4DC2-97AE-DB5D9FB9DFE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782C4723-B786-4DC2-97AE-DB5D9FB9DFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782C4723-B786-4DC2-97AE-DB5D9FB9DFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782C4723-B786-4DC2-97AE-DB5D9FB9DFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3B3827-FFE4-470D-9F2F-5F73FC5D20B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3B3827-FFE4-470D-9F2F-5F73FC5D20B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3B3827-FFE4-470D-9F2F-5F73FC5D20B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3B3827-FFE4-470D-9F2F-5F73FC5D20B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
