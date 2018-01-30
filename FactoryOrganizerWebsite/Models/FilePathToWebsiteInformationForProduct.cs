@@ -13,5 +13,6 @@ namespace FactoryOrganizerWebsite.Models
         public string ItemNumber { get; set; }
         public bool IsAssignedToCell { get; set; }
         public string CellNumber { get; set; }
+        public string WholeFilePath { get; set; }
     }
 }

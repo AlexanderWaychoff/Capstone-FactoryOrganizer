@@ -65,6 +65,7 @@ namespace FactoryOrganizerWebsite.Migrations
                         ItemNumber = c.String(),
                         IsAssignedToCell = c.Boolean(nullable: false),
                         CellNumber = c.String(),
+                        WholeFilePath = c.String(),
                     })
                 .PrimaryKey(t => t.FilePathToWebsiteInformationForProductID);
             

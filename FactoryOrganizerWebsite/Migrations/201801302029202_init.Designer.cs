@@ -13,7 +13,7 @@ namespace FactoryOrganizerWebsite.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201801301942108_init"; }
+            get { return "201801302029202_init"; }
         }
         
         string IMigrationMetadata.Source
