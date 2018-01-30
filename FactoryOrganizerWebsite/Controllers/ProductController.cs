@@ -25,8 +25,48 @@ namespace FactoryOrganizerWebsite.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int? id)
         {
-            //string websiteFilePath = folderNames.CustomersFolder + @"\" +
-            //ExternalFile.RetrieveAllFileNamesInDirectory();
+            var exePath = db.FilePathToPrograms
+                .Where(x => x.FilePathToProgramID == 1)
+                .FirstOrDefault();
+
+            var cellProductPath = from u in db.FilePathToWebsiteInformationForProducts
+                                  select new FilePath
+                                  {
+                                      CustomerName = u.CustomerName,
+                                      IsAssignedToCell = u.IsAssignedToCell,
+                                      CellNumber = u.CellNumber,
+                                      ItemNumber = u.ItemNumber
+                                  };
+
+            List<Product> products = new List<Product>();
+            Product product = new Product();
+            string cellPathValue = "";
+
+            foreach(FilePath path in cellProductPath.ToList())
+            {
+                if(path.IsAssignedToCell == true)
+                {
+                    cellPathValue = @"\" + folderNames.CellsFolder + @"\" + path.CellNumber + @"\";
+                }
+                path.WholeFilePath = exePath + @"\" + folderNames.CustomersFolder + @"\" + path.CustomerName + cellPathValue + folderNames.WebsiteFolder;
+
+                product.Customer = path.CustomerName;
+                product.Price = 10.00M;
+                product.WholeFilePath = path.WholeFilePath;
+                product.CellNumber = path.CellNumber;
+                product.ItemNumber = path.ItemNumber;
+
+                var checkProducts = db.Products
+                    .Where(x => x.Customer == product.Customer && x.ItemNumber == product.ItemNumber);
+                if (checkProducts == null)
+                {
+                    db.Products.Add(product);
+                }
+                //products.Add(product);
+            }
+
+            //string websiteFilePath = exePath.FilePath + @"\" + folderNames.CustomersFolder;
+            //ExternalFile.RetrieveAllFolderNamesInDirectory(websiteFilePath);
 
             //if (id == null)
             //{
@@ -37,7 +77,7 @@ namespace FactoryOrganizerWebsite.Controllers
             //{
             //    return HttpNotFound();
             //}
-            return View();//product
+            return View(products);//product
         }
 
         // GET: Product/Create

@@ -57,11 +57,24 @@ namespace FactoryOrganizerWebsite.Migrations
                 .PrimaryKey(t => t.FilePathToProgramID);
             
             CreateTable(
+                "dbo.FilePathToWebsiteInformationForProducts",
+                c => new
+                    {
+                        FilePathToWebsiteInformationForProductID = c.Int(nullable: false, identity: true),
+                        CustomerName = c.String(),
+                        ItemNumber = c.String(),
+                        IsAssignedToCell = c.Boolean(nullable: false),
+                        CellNumber = c.String(),
+                    })
+                .PrimaryKey(t => t.FilePathToWebsiteInformationForProductID);
+            
+            CreateTable(
                 "dbo.JobsForProductions",
                 c => new
                     {
                         JobsForProductionID = c.Int(nullable: false, identity: true),
                         JobNumber = c.String(),
+                        ItemNumber = c.String(),
                         EmployeeNumber = c.Int(nullable: false),
                         ProductID = c.Int(nullable: false),
                         TotalPieces = c.Int(nullable: false),
@@ -74,10 +87,25 @@ namespace FactoryOrganizerWebsite.Migrations
                 c => new
                     {
                         ProductID = c.Int(nullable: false, identity: true),
+                        ItemNumber = c.String(),
                         Customer = c.String(),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        WholeFilePath = c.String(),
+                        CellNumber = c.String(),
                     })
                 .PrimaryKey(t => t.ProductID);
+            
+            CreateTable(
+                "dbo.ProductAwaitingConfirmations",
+                c => new
+                    {
+                        ProductAwaitingConfirmationID = c.Int(nullable: false, identity: true),
+                        CustomerName = c.String(),
+                        ItemNumber = c.String(),
+                        TotalOrder = c.Int(nullable: false),
+                        CellNumber = c.String(),
+                    })
+                .PrimaryKey(t => t.ProductAwaitingConfirmationID);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -166,8 +194,10 @@ namespace FactoryOrganizerWebsite.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.ProductAwaitingConfirmations");
             DropTable("dbo.Products");
             DropTable("dbo.JobsForProductions");
+            DropTable("dbo.FilePathToWebsiteInformationForProducts");
             DropTable("dbo.FilePathToPrograms");
             DropTable("dbo.EmployeeScraps");
             DropTable("dbo.EmployeeProductions");

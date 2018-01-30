@@ -37,5 +37,7 @@ namespace FactoryOrganizerWebsite.Models
         public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.EmployeeScrap> EmployeeScraps { get; set; }
         public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.FilePathToProgram> FilePathToPrograms { get; set; }
         public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.JobsForProduction> JobsForProductions { get; set; }
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.FilePathToWebsiteInformationForProduct> FilePathToWebsiteInformationForProducts { get; set; }
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.ProductAwaitingConfirmation> ProductsAwaitingConfirmation { get; set; }
     }
 }

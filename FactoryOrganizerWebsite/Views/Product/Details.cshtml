@@ -27,6 +27,22 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
 
+        <dt>
+            <label>Image</label>
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.WholeFilePath)"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CellNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CellNumber)
+        </dd>
+
     </dl>
 </div>
 <p>

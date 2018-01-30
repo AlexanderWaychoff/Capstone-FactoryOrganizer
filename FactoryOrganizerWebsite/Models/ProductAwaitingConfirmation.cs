@@ -5,13 +5,12 @@ using System.Web;
 
 namespace FactoryOrganizerWebsite.Models
 {
-    public class Product
+    public class ProductAwaitingConfirmation
     {
-        public int ProductID { get; set; }
+        public int ProductAwaitingConfirmationID { get; set; }
+        public string CustomerName { get; set; }
         public string ItemNumber { get; set; }
-        public string Customer { get; set; }
-        public decimal Price { get; set; }
-        public string WholeFilePath { get; set; }
+        public int TotalOrder { get; set; }
         public string CellNumber { get; set; }
     }
 }
