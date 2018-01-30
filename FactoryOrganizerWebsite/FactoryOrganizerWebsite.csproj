@@ -214,6 +214,7 @@
     <Compile Include="Controllers\CustomerInformationController.cs" />
     <Compile Include="Models\EmployeeProduction.cs" />
     <Compile Include="Models\EmployeeScrap.cs" />
+    <Compile Include="Models\FilePathToPrograms.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JobsForProduction.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
