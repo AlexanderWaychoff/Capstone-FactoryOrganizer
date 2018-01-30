@@ -5,13 +5,13 @@ using System.Web;
 
 namespace FactoryOrganizerWebsite.Models
 {
-    public class EmployeeScrap
+    public class EmployeeProduction
     {
-        public int EmployeeScrapID { get; set; }
+        public int EmployeeProductionID { get; set; }
         public int EmployeeNumber { get; set; }
         public DateTime DayOfProduction { get; set; }
-        public int Scrap { get; set; }
-        //public int ScrapFromEXTRA { get; set; }
-        public int ScrapReason { get; set; }
+        public int ProductCompletedAmount { get; set; }
+        public string JobNumber { get; set; }
+        public int? Operation { get; set; }
     }
 }

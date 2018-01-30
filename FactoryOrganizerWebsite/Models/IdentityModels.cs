@@ -29,5 +29,9 @@ namespace FactoryOrganizerWebsite.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.CustomerInformation> CustomerInformations { get; set; }
+
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.Product> Products { get; set; }
     }
 }
