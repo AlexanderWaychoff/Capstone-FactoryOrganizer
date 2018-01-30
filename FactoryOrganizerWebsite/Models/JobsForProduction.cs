@@ -7,7 +7,7 @@ namespace FactoryOrganizerWebsite.Models
 {
     public class JobsForProduction
     {
-        public int JobID { get; set; }
+        public int JobsForProductionID { get; set; }
         public string JobNumber { get; set; }
         public int EmployeeNumber { get; set; }
         public int ProductID { get; set; }

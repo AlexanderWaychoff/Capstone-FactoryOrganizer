@@ -33,5 +33,9 @@ namespace FactoryOrganizerWebsite.Models
         public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.CustomerInformation> CustomerInformations { get; set; }
 
         public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.Product> Products { get; set; }
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.EmployeeProduction> EmployeeProductions { get; set; }
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.EmployeeScrap> EmployeeScraps { get; set; }
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.FilePathToProgram> FilePathToPrograms { get; set; }
+        public System.Data.Entity.DbSet<FactoryOrganizerWebsite.Models.JobsForProduction> JobsForProductions { get; set; }
     }
 }
