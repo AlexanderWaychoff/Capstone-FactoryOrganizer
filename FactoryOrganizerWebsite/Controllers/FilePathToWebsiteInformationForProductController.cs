@@ -161,18 +161,33 @@ namespace FactoryOrganizerWebsite.Controllers
             return View(product);
         }
 
-        public ActionResult PaymentSuccessful(string stripeEmail, string stripeToken, int? id)
+        public ActionResult PaymentSuccessful(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            FilePathToWebsiteInformationForProduct purchase = db.FilePathToWebsiteInformationForProducts.Find(id);
+            if (purchase == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+
+            var productToAddForConfirmation = db.FilePathToWebsiteInformationForProducts
+                .Where(x => x.FilePathToWebsiteInformationForProductID == id)
+                .FirstOrDefault();
+            
+            ProductAwaitingConfirmation customerPurchase = new ProductAwaitingConfirmation();
+
+            customerPurchase.CustomerName = productToAddForConfirmation.CustomerName;
+            customerPurchase.ItemNumber = productToAddForConfirmation.ItemNumber;
+            customerPurchase.TotalOrder = 100;  //remove 100 hard code when customer can select how much
+            customerPurchase.CellNumber = productToAddForConfirmation.CellNumber;
+
+            db.ProductsAwaitingConfirmation.Add(customerPurchase);
+            db.SaveChanges();
+
+            return View();
         }
     }
 }

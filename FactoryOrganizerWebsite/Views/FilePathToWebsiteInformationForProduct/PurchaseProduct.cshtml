@@ -9,7 +9,7 @@
 
 <hr />
 <h3>Buy 100 @Model.ItemNumber now</h3>
-<form action="/FilePathToWebsiteInformationForProduct/PaymentSuccessful" method="POST">
+<form action="@Url.Action("PaymentSuccessful", "FilePathToWebsiteInformationForProduct", new { id=Model.FilePathToWebsiteInformationForProductID })" method="POST">
     <input type="hidden" name="filePathToWebsiteInformationForProductID" value="@Model.FilePathToWebsiteInformationForProductID" />
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="pk_test_QHcbtn20inBGW8ybfCzWanoW"
