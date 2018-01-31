@@ -1,0 +1,22 @@
+﻿@model FactoryOrganizerWebsite.Models.FilePathToWebsiteInformationForProduct
+
+@{
+    ViewBag.Title = "PurchaseProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PurchaseProduct</h2>
+
+<hr />
+<h3>Buy 100 @Model.ItemNumber now</h3>
+<form action="/FilePathToWebsiteInformationForProduct/PaymentSuccessful" method="POST">
+    <input type="hidden" name="filePathToWebsiteInformationForProductID" value="@Model.FilePathToWebsiteInformationForProductID" />
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="pk_test_QHcbtn20inBGW8ybfCzWanoW"
+            @*data-image="/images/marketplace.png"*@
+            data-name="Generic Factory"
+            data-description="Buy 100 @Model.ItemNumber"
+            data-amount="35000"
+            data-label="Buy @Model.ItemNumber">
+    </script>
+</form>

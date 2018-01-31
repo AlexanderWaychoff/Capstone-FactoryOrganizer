@@ -301,6 +301,8 @@
     <Content Include="Views\FilePathToWebsiteInformationForProduct\Details.cshtml" />
     <Content Include="Views\FilePathToWebsiteInformationForProduct\Edit.cshtml" />
     <Content Include="Views\FilePathToWebsiteInformationForProduct\Index.cshtml" />
+    <Content Include="Views\FilePathToWebsiteInformationForProduct\PurchaseProduct.cshtml" />
+    <Content Include="Views\FilePathToWebsiteInformationForProduct\PaymentSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

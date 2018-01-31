@@ -18,11 +18,11 @@
         <th>
             @Html.DisplayNameFor(model => model.ItemNumber)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CellNumber)
+        <th width="200">
+            <label>Description</label>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.WholeFilePath)
+            <label>Product Image</label>
         </th>
         <th></th>
     </tr>
@@ -35,16 +35,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.ItemNumber)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CellNumber)
+        <td width="200">
+            <text>@item.CellNumber</text>
         </td>
         <td>
-            <img src="@Url.Content(item.WholeFilePath + @"\" + item.ItemNumber +".png")"/>
+            <img src="@Url.Content(item.WholeFilePath + @"\" + item.ItemNumber +".png")" width="150" height="150"/>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FilePathToWebsiteInformationForProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FilePathToWebsiteInformationForProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FilePathToWebsiteInformationForProductID })
+            @Html.ActionLink("Buy", "PurchaseProduct", new { id=item.FilePathToWebsiteInformationForProductID })
         </td>
     </tr>
 }

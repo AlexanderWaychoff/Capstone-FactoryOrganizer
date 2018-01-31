@@ -20,65 +20,43 @@ namespace FactoryOrganizerWebsite.Controllers
         public ActionResult Index()
         {
             string websiteImagePath = @"\Content\Images";
-            string baseImageFilePath;
+            string baseImageFilePath = "";
             string exePath = @"C:\Users\Andross\Desktop\school_projects\C#\FactoryOrganizerWebsiteAndSolution\FactoryOrganizerWebsite";
             exePath += websiteImagePath;
+
+            string description;
 
             ExternalFile.RemoveAllFilesFromFolder(exePath);
 
             foreach (var item in db.FilePathToWebsiteInformationForProducts.ToList())
             {
-                baseImageFilePath = item.WholeFilePath;
-                ExternalFile.CopyFileForWebsite(exePath + @"\" + item.ItemNumber + ".png", item.WholeFilePath + @"\" + "Image.png");
+                try
+                {
+                    baseImageFilePath = item.WholeFilePath;
+                    ExternalFile.CopyFileForWebsite(exePath + @"\" + item.ItemNumber + ".png", item.WholeFilePath + @"\" + "Image.png");
+                }
+                catch
+                {
+
+                }
+                try
+                {
+                    ExternalFile.CopyFileForWebsite(exePath + @"\" + item.ItemNumber + ".txt", item.WholeFilePath + @"\" + "Description.txt");
+                    description = System.IO.File.ReadAllText(baseImageFilePath + @"\" + "Description.txt");
+                    item.CellNumber = description;
+                }
+                catch
+                {
+
+                }
                 item.WholeFilePath = websiteImagePath;
             }
-            
+
             return View(db.FilePathToWebsiteInformationForProducts.ToList());
         }
 
         // GET: FilePathToWebsiteInformationForProduct/Details/5
-        public ActionResult Details(int? id)
-        {
-            var exePath = db.FilePathToPrograms
-                .Where(x => x.FilePathToProgramID == 1)
-                .FirstOrDefault();
 
-            var filePathToWebsiteInformationForProduct = db.FilePathToWebsiteInformationForProducts
-                .Where(x => x.CustomerName != null)
-                .ToList();
-
-
-            List<Product> products = new List<Product>();
-            Product product = new Product();
-            string cellPathValue = "";
-            string basePath;
-
-            foreach (var path in filePathToWebsiteInformationForProduct)
-            {
-                if (path.IsAssignedToCell == true)
-                {
-                    cellPathValue = @"\" + folderNames.CellsFolder + @"\" + path.CellNumber + @"\";
-                }
-                basePath = path.WholeFilePath;
-                path.WholeFilePath = basePath + @"\" + folderNames.CustomersFolder + @"\" + path.CustomerName + cellPathValue + folderNames.WebsiteFolder;
-
-                product.Customer = path.CustomerName;
-                product.Price = 10.00M;
-                product.WholeFilePath = path.WholeFilePath;
-                product.CellNumber = path.CellNumber;
-                product.ItemNumber = path.ItemNumber;
-
-                var checkProducts = db.Products
-                    .Where(x => x.Customer == product.Customer && x.ItemNumber == product.ItemNumber)
-                    .FirstOrDefault();
-                if (checkProducts == null)
-                {
-                    db.Products.Add(product);
-                }
-            }
-            db.SaveChanges();
-            return View(filePathToWebsiteInformationForProduct);
-        }
 
         // GET: FilePathToWebsiteInformationForProduct/Create
         public ActionResult Create()
@@ -167,6 +145,34 @@ namespace FactoryOrganizerWebsite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult PurchaseProduct(int? id)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var product = db.FilePathToWebsiteInformationForProducts
+                .Where(r => r.FilePathToWebsiteInformationForProductID == id)
+                .FirstOrDefault();
+
+            return View(product);
+        }
+
+        public ActionResult PaymentSuccessful(string stripeEmail, string stripeToken, int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
     }
 }
